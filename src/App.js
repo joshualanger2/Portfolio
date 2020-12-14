@@ -1,26 +1,54 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { AnimateSharedLayout, AnimatePresence } from "framer-motion";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Header } from "./components/header/Header";
+import { Item } from "./Item";
+import { List } from "./List";
+import Message from "./components/Message"
+import Footer from "./components/footer/Footer";
+import { useSelector } from "react-redux";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function Store({ match }) {
+    let { id } = match.params;
+    // const updateBody = () => {
+    //     if (id !== undefined) {
+    //         document.body.classList.add('selected-project');
+    //     } else if (id === undefined) {
+    //         document.body.classList.remove('selected-project')
+    //     }
+    // }
+
+    const scrollUp = () => {
+        window.scrollTo({ top: 20, behavior: 'smooth' })
+    }
+
+    id && scrollUp();
+    // id === undefined && updateBody();
+
+    return (
+        <>
+        <List selectedId={id} />
+        <AnimatePresence>
+            {id && <Item id={id} key="item" />}
+            {console.log(id)}
+        </AnimatePresence>
+        </>
+    );
 }
 
-export default App;
+export default function App() {
+    const selectedTab = useSelector(state => state.selectTab);
+    return (
+        <div className="container">
+            <AnimateSharedLayout type="crossfade">
+                <Header />
+                {selectedTab === "projects" ?
+                    <Router>
+                        <Route path={["/:id", "/"]} component={Store} />
+                    </Router> :
+                    <Message />}
+                <Footer />
+            </AnimateSharedLayout>
+        </div>
+    );
+}
