@@ -2,8 +2,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import { LoremIpsum } from "react-lorem-ipsum";
 import { Link } from "react-router-dom";
-import { projects } from "./data";
-import {ColorDiv} from './components/global/styled-components'
+import { projects } from "../data";
+import {ColorDiv} from './global/styled-components'
 
 export function Item({ id }) {
   const { category, title, backgroundColor } = projects.find(project => project.id === id);
@@ -37,9 +37,9 @@ export function Item({ id }) {
           </motion.div>
           <motion.div className="content-container" animate>
             <LoremIpsum
-              p={6}
-              avgWordsPerSentence={6}
-              avgSentencesPerParagraph={4}
+                p={30}
+                avgWordsPerSentence={20}
+                avgSentencesPerParagraph={10}
             />
           </motion.div>
         </ColorDiv>

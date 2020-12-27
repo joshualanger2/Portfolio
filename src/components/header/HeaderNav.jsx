@@ -8,8 +8,11 @@ import NavButton from "../global/NavButton";
 
 const NavContainer = styled(motion.div)`
     width: 100%;
+    max-width: 300px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 `;
 
 function PopUpNav() {
@@ -27,9 +30,9 @@ function PopUpNav() {
                                 onClick={() => dispatch(selectTab(option))}
                                 name={option}
                                 key={option}
-                                selectedColor="#8D93AB"
-                                secondaryColor="#FF6B6B"
-                                underlineColor="#8D93AB"
+                                selectedColor="#839d72"
+                                secondaryColor="#56644E"
+                                underlineColor="#e8f19d"
                             />
                         );
                     })}

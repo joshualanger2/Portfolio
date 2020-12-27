@@ -1,15 +1,15 @@
 import React from 'react';
 import styled from 'styled-components'
 import { FlexDiv } from '../global/styled-components';
-import { FaInstagram, FaTwitter, FaLinkedin } from "react-icons/fa";
+import { FaInstagram, FaTwitter, FaLinkedin, FaGithub } from "react-icons/fa";
 
 const SocialIconContainter = styled(FlexDiv)`
-    max-width: 250px;
+    max-width: 350px;
     min-height: 30px;
     max-height: 100%;
     background-color: #D6E0F0;
     justify-content: center;
-    margin: auto;
+    margin: 20px auto;
     border-radius: 5px;
     padding: 10px;
 `;
@@ -40,6 +40,9 @@ function Footer() {
             </Circle>
             <Circle>
                 <FaTwitter className="social-icon"/>
+            </Circle>
+            <Circle>
+                <FaGithub className="social-icon"/>
             </Circle>
         </SocialIconContainter>
     );
