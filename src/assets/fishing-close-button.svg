@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="41px" height="41px" viewBox="0 0 41 41" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group@3x</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="o" transform="translate(-14.000000, -12.000000)">
+            <g id="Group" transform="translate(14.000000, 12.000000)">
+                <circle id="Oval" fill="#F1F3F8" cx="20.5" cy="20.5" r="20.5"></circle>
+                <rect id="Rectangle" fill="#315FFF" transform="translate(20.500000, 20.500000) rotate(45.000000) translate(-20.500000, -20.500000) " x="18" y="8" width="5" height="25" rx="2.5"></rect>
+                <rect id="Rectangle" fill="#315FFF" transform="translate(20.500000, 20.500000) scale(-1, 1) rotate(45.000000) translate(-20.500000, -20.500000) " x="18" y="8" width="5" height="25" rx="2.5"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

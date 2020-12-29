@@ -1,10 +1,21 @@
 import React, {useCallback} from "react";
 import { projects } from "../data";
 import { useHistory } from "react-router-dom";
-import { motion, useAnimation } from "framer-motion";
+import { motion } from "framer-motion";
 import {useSelector} from "react-redux"
 import {ColorDiv} from './global/styled-components'
 import OpenProjectButton from './global/OpenProjectButton'
+import styled from "styled-components";
+import fishingGIF from '../assets/fishing-app-ui.gif'
+
+const Container = styled(motion.div)`
+    min-width: 100vw;
+    height: auto;
+    padding: 45px 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
 
 
 function Card({ id, title, category, backgroundColor, summary, buttonLabel }) {
@@ -25,7 +36,7 @@ function Card({ id, title, category, backgroundColor, summary, buttonLabel }) {
                 className="card-image-container closed"
                 layoutId={`card-image-container-${id}`}
             >
-                <img className="project-img" src={`https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-homemade-pizza-horizontal-1542312378.png?crop=1.00xw:0.752xh;0,0.139xh&resize=640:*`} alt="" />
+                <motion.img layoutId={`card-image-${id}`} className="project-img" src={fishingGIF} alt="" />
             </motion.div>
             <motion.div
                 className="title-container"
@@ -46,32 +57,18 @@ function Card({ id, title, category, backgroundColor, summary, buttonLabel }) {
 export function List({ selectedId }) {
     const selectedTab = useSelector(state => state.selectTab);
     const initialLoad = useSelector(state => state.initialLoad);
-    const controls = useAnimation();
-    const variants = {
-        visible: { opacity: [0.5, 1], x: [50, 0]},
-        hidden: { opacity: [1, 0], x: [0, -100] },
-        initial: { opacity: [0.5, 1], x: 0}
-    };
-
-    if ((initialLoad === false) && (selectedTab === "projects")) {
-        controls.start("initial")
-    } else if ((initialLoad === true) && (selectedTab === "projects")) {
-        controls.start("visible")
-    } else {
-        controls.start("hidden")
-    }
 
     return (
+        <Container>
+        <div className="container">
         <motion.ul
             className="card-list"
-            variants={variants}
-            animate={controls}
-            transition={{duration: 0.15, ease: "easeOut", type: "tween"}}
-            exit={{opacity: 0, x: 50, transition: { duration: 0.15 }}}
         >
         {projects.map(project => (
             <Card key={project.id} {...project} isSelected={project.id === selectedId} />
         ))}
         </motion.ul>
+        </div>
+        </Container>
   );
 }

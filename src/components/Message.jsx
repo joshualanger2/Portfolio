@@ -1,7 +1,6 @@
 import React from "react";
-import { motion, useAnimation } from "framer-motion";
+import { motion } from "framer-motion";
 import styled from "styled-components";
-import { useSelector } from "react-redux";
 import cloudImage from "../assets/clouds-image.jpg"
 
 const aboutData = [
@@ -14,27 +13,9 @@ const aboutData = [
 ];
 
 function Message() {
-    const selectedTab = useSelector(state => state.selectTab);
-
-    const controls = useAnimation();
-    const variants = {
-        visible: { opacity: [0.5, 1], x: [-50, 0]},
-        hidden: { opacity: [1, 0], x: [0, 100] },
-    }
-
-    if (selectedTab === "about") {
-        controls.start("visible")
-    } else {
-        controls.start("hidden")
-    }
 
 	return (
-		<ParentDiv
-            animate={controls}
-            variants={variants}
-            transition={ {duration: 0.15, ease: "easeOut", type: "tween" }}
-            exit={{opacity: 0, x: -50, transition: { duration: 0.15 }}}
-        >
+		<ParentDiv>
             <StyledDiv>
                 <StyledImg src={cloudImage}/>
                 <StyledHeader>{aboutData[0]}</StyledHeader>
@@ -49,6 +30,7 @@ export default Message;
 
 // styled components
 const ParentDiv = styled(motion.div)`
+    width: 100vw;
     height: auto;
     display: flex;
     flex-direction: column;
@@ -63,24 +45,24 @@ const StyledDiv = styled(motion.div)`
     justify-content: center;
     align-items: center;
     flex-direction: column;
-	background-color: #3d5a80;
+	background-color: #e2f3ff;
     border-radius: 5px;
     padding: 15px;
     margin-top: 15px;
 `;
 
 const StyledHeader = styled(motion.h2)`
-	color: white;
+	color: #3d5a80;
 	text-align: left;
     line-height: 1.2;
-    font-size: 60px;
+    font-size: 55px;
     font-weight: 800;
-    margin: 2% 0;
+    margin: 3% 0;
     max-width: 65vw;
 `;
 
 const StyledImg = styled.img`
     margin: 0 auto;
-    width: 75vw;
+    width: 65vw;
     height: auto;
 `;

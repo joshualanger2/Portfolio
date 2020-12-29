@@ -1,4 +1,4 @@
-import {SELECT_TAB, SELECT_PROJECT, INITIAL_LOAD} from '../constants/actionTypes'
+import {SELECT_TAB, SELECT_PROJECT, INITIAL_LOAD, HIDE_HEADER} from '../constants/actionTypes'
 
 export const selectTab = tab => {
     return {
@@ -18,5 +18,11 @@ export const initialLoad = state => {
     return {
         type: INITIAL_LOAD,
         payload: state
+    }
+}
+
+export const hideHeader = () => {
+    return {
+        type: HIDE_HEADER
     }
 }

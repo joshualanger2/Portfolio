@@ -8,7 +8,7 @@ const StyledButton = styled.button`
     border: 1px solid ${props => props.color};
     right: 5%;
     top: 5%;
-    z-index: 200;
+    z-index: 2;
     background-color: white;
     color: ${props => props.color};
     &:hover {
