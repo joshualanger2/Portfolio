@@ -30,9 +30,9 @@ function PopUpNav() {
                                 onClick={() => dispatch(selectTab(option))}
                                 name={option}
                                 key={option}
-                                selectedColor="#839d72"
-                                secondaryColor="#56644E"
-                                underlineColor="#e8f19d"
+                                selectedColor="#3d5a80"
+                                secondaryColor="#943C9C"
+                                underlineColor="#E2EC9B"
                             />
                         );
                     })}

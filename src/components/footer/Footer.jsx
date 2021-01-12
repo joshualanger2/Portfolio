@@ -2,9 +2,10 @@ import React from 'react';
 import styled from 'styled-components'
 import { FlexDiv } from '../global/styled-components';
 import { FaInstagram, FaTwitter, FaLinkedin, FaGithub } from "react-icons/fa";
+import {openInNewTab} from '../../utility/openInNewTab'
 
 const SocialIconContainter = styled(FlexDiv)`
-    max-width: 350px;
+    max-width: 250px;
     min-height: 30px;
     max-height: 100%;
     background-color: #D6E0F0;
@@ -32,16 +33,10 @@ const Circle = styled.div`
 function Footer() {
     return (
         <SocialIconContainter>
-            <Circle>
-                <FaInstagram className="social-icon"/>
-            </Circle>
-            <Circle>
+            <Circle onClick={() => openInNewTab('https://www.linkedin.com/in/nicolasjoshualanger/')}>
                 <FaLinkedin className="social-icon"/>
             </Circle>
-            <Circle>
-                <FaTwitter className="social-icon"/>
-            </Circle>
-            <Circle>
+            <Circle onClick={() => openInNewTab('https://github.com/joshualanger2')}>
                 <FaGithub className="social-icon"/>
             </Circle>
         </SocialIconContainter>

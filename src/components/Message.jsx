@@ -7,9 +7,9 @@ const aboutData = [
     "Hey - my name is Josh and I’m glad you found my site!",
     "I love to think about problems and occassionally I try to design and build a solution to one.",
     "I am originally from Munich, Germany and grew up between there and California.",
-    "For the last 5 years I studied Philosophy and Rhetoric while completing my BA at Bates College and Maine before joining HubSpot in Cambridge.",
-    "It was during this time that I discovered my passion for the building of digital products. I began to use Sketch and attended General Assembly’s UX bootcamp.",
-    "This past year I completed iOS and Web Development bootcamps so that I can build the MVP of designed solutions. This is that work —"
+    "For the last 5 years I studied Philosophy and Rhetoric while completing my BA at Bates College in Maine before joining HubSpot in Cambridge.",
+    "It was during this time that I discovered my passion for digital product design. I began to use Sketch and attended General Assembly for UX Design.",
+    "This past year I completed iOS and Web Development bootcamps so that I can build MVP's and early iterations in React or Swift. This is that work—"
 ];
 
 function Message() {
@@ -17,10 +17,17 @@ function Message() {
 	return (
 		<ParentDiv>
             <StyledDiv>
-                <StyledImg src={cloudImage}/>
+                <StyledImg
+                    src={cloudImage}
+                    animate={{boxShadow: "-10px -10px 20px 10px rgba(0,0,0,0.1)"}}
+                    whileHover={{boxShadow: "-20px -10px 30px 15px rgba(0,0,0,0.2)"}}
+                />
                 <StyledHeader>{aboutData[0]}</StyledHeader>
                 <StyledHeader>{aboutData[1]}</StyledHeader>
                 <StyledHeader>{aboutData[2]}</StyledHeader>
+                <StyledHeader>{aboutData[3]}</StyledHeader>
+                <StyledHeader>{aboutData[4]}</StyledHeader>
+                <StyledHeader>{aboutData[5]}</StyledHeader>
 			</StyledDiv>
 		</ParentDiv>
 	);
@@ -57,12 +64,13 @@ const StyledHeader = styled(motion.h2)`
     line-height: 1.2;
     font-size: 55px;
     font-weight: 800;
-    margin: 3% 0;
+    margin: 5% 0;
     max-width: 65vw;
 `;
 
-const StyledImg = styled.img`
+const StyledImg = styled(motion.img)`
     margin: 0 auto;
     width: 65vw;
     height: auto;
+    border-radius: 0.5%;
 `;

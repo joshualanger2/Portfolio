@@ -1,43 +1,74 @@
 import React from "react";
-import { AnimateSharedLayout, AnimatePresence, motion, useAnimation, useMotionValue } from "framer-motion";
+import { AnimateSharedLayout, AnimatePresence, motion, useAnimation } from "framer-motion";
+import styled from 'styled-components'
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import  Header  from "./components/header/Header";
-import { Item } from "./components/Item";
 import { List } from "./components/List";
 import Message from "./components/Message"
 import Footer from "./components/footer/Footer";
 import { useSelector, useDispatch } from "react-redux";
 import {selectProject, initialLoad} from "./actions"
 import {Fishing} from './components/projects/Fishing'
-import { FlexDiv } from "./components/global/styled-components";
+import {Portfolio} from './components/projects/Portfolio'
+import {AlaCarte} from './components/projects/AlaCarte'
+import {JustBreathe} from './components/projects/JustBreathe'
+import {Precordings} from './components/projects/Precordings'
+
+const viewportHeight = (id) => {
+    switch(id) {
+        case "fishing":
+            return "2000px";
+        case "alacarte":
+            return "2000px";
+        case "justbreathe":
+            return "2000px";
+        case "precordings":
+            return "2000px";
+        case "portfolio":
+            return "2000px";
+        default:
+            return "100%";
+    }
+}
+
+// height: ${props => ((props.selectedTab === "about") || (props.selectedProject !== "")) ? "auto" : "2000px"};
+
+const AppContainer = styled.div`
+    width: 200vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    height: 7000px;
+    @media only screen and (max-width: 600px) {
+        height: ${props => ((props.selectedTab === "about") || (props.selectedProject !== "")) ? "auto" : "3900px"};
+    }
+`;
+
+function renderItem(id) {
+        switch(id) {
+            case "fishing":
+                return <Fishing id={id} key="item" />;
+            case "alacarte":
+                return <AlaCarte id={id} key="item" />
+            case "justbreathe":
+                return <JustBreathe id={id} key="item" />
+            case "precordings":
+                return <Precordings id={id} key="item" />
+            case "portfolio":
+                return <Portfolio id={id} key="item" />
+            default:
+                return null;
+        }
+}
 
 function Store({ match }) {
     let { id } = match.params;
     let dispatch = useDispatch()
 
-    const scrollUp = () => {
-        window.scrollTo({ top: 20, behavior: 'smooth' })
-    }
-    id && scrollUp();
     id && dispatch(selectProject(id))
     id === undefined && dispatch(selectProject(""))
-
-    function renderItem(id) {
-        switch(id) {
-            case "fishing":
-                return <Fishing id={id} key="item" />;
-            case "alacarte":
-                return <Item id={id} key="item" />
-            case "justbreathe":
-                return <Item id={id} key="item" />
-            case "precordings":
-                return <Item id={id} key="item" />
-            case "portfolio":
-                return <Item id={id} key="item" />
-            default:
-                return null;
-        }
-    }
 
     return (
         <>
@@ -50,6 +81,8 @@ function Store({ match }) {
 }
 
 export default function App() {
+
+    // * Page Animation
     const selectedTab = useSelector(state => state.selectTab);
     const selectedProject = useSelector(state => state.selectProject)
     const dispatch = useDispatch();
@@ -79,10 +112,16 @@ export default function App() {
         aboutControls.start("aboutVisible");
     }
 
+    const scrollUp = () => {
+        window.scrollTo({ top: 20, behavior: 'smooth' })
+    }
+    selectedProject && scrollUp();
+
     return (
         <>
+
+            <AppContainer selectedTab={selectedTab} selectedProject={selectedProject}>
             <Header />
-            <div className="app-container">
             <motion.div
                 className="page-container projects"
                 animate={projectsControls}
@@ -105,7 +144,7 @@ export default function App() {
                 <Message />
                 <Footer />
             </motion.div>
-            </div>
+            </AppContainer>
         </>
 
     );

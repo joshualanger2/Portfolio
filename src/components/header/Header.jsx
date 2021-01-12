@@ -3,8 +3,8 @@ import styled from "styled-components";
 import {HorizontalSpacer} from "../global/styled-components"
 import HeaderNav from "./HeaderNav";
 import logo from "../../assets/logo.svg";
-import {useSelector, useDispatch} from "react-redux"
-import useDocumentScrollThrottled from "../../useDocumentScrollThrottled"
+import {useSelector} from "react-redux"
+import useDocumentScrollThrottled from "../../utility/useDocumentScrollThrottled"
 
 const Logo = styled.img`
     margin-top: 20px;
@@ -41,6 +41,8 @@ const HeaderBackground = styled.div`
 
 function Header() {
     const selectedProject = useSelector(state => state.selectProject);
+
+    // * Hide Header
     const [shouldHideHeader, setShouldHideHeader] = useState(false);
     let hidden = shouldHideHeader || selectedProject !== "" ? 'hidden' : '';
     const MINIMUM_SCROLL = 20;
@@ -51,8 +53,6 @@ function Header() {
         const isMinimumScrolled = currentScrollTop > MINIMUM_SCROLL;
         setShouldHideHeader((isScrolledDown && isMinimumScrolled) || (!isScrolledDown && isMinimumScrolled));
     });
-
-
 
     return (
         <>
