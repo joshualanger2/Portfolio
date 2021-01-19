@@ -27,17 +27,22 @@ const CardListItem = styled(motion.li)`
     height: ${props => props.size === "large" ? "560px" : "350px"};
     flex: 0 0 40%;
     max-width: 40%;
-    &:nth-child(odd) {
-        padding-left: 0;
+    @media only screen and (max-width: 1000px) {
+        flex: 1 0 100%;
+        max-width: 100%;
+        padding: 40px;
+        height: 560px;
     }
-    &:nth-child(even) {
-        padding-right: 0;
+    @media only screen and (max-width: 600px) {
+        height: ${props => props.size === "large" ? "560px" : "350px"};
+        padding: 10px;
+        margin-top: 20px;
     }
 `;
 
 function Card({ id, title, category, backgroundColor, summary, buttonLabel, image, size }) {
     const history = useHistory();
-    const handleClick = useCallback(() => history.push(`/${id}`), [history])
+    const handleClick = useCallback(() => history.push(`/${id}`), [history, id])
     return (
         <CardListItem size={size} whileHover={{scale: 1.1}}>
         <div className="card-content-container">
@@ -59,7 +64,7 @@ function Card({ id, title, category, backgroundColor, summary, buttonLabel, imag
                 className="title-container"
                 layoutId={`title-container-${id}`}
             >
-                <motion.span className="category" layoutId={`category-${id}`}>{category}</motion.span>
+                <motion.span className="category closed" layoutId={`category-${id}`}>{category}</motion.span>
                 <motion.h2 className="title" layoutId={`title-${id}`}>{title}</motion.h2>
                 <motion.div className="summary-container" layoutId={`summary-container-${id}`}>
                     <motion.span className="card-summary" layoutId={`summary-${id}`}>{summary}</motion.span>
@@ -80,9 +85,9 @@ export function List({ selectedId }) {
         <motion.ul
             className="card-list"
         >
-        {projects.map(project => (
-            <Card key={project.id} {...project} isSelected={project.id === selectedId} />
-        ))}
+            {projects.map(project => (
+                <Card key={project.id} {...project} isSelected={project.id === selectedId} />
+            ))}
         </motion.ul>
         </ChildContainer>
         </Container>

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components'
 import { FlexDiv } from '../global/styled-components';
-import { FaInstagram, FaTwitter, FaLinkedin, FaGithub } from "react-icons/fa";
+import { FaLinkedin, FaGithub } from "react-icons/fa";
 import {openInNewTab} from '../../utility/openInNewTab'
 
 const SocialIconContainter = styled(FlexDiv)`

@@ -6,6 +6,9 @@ const CenteredP = styled.h3`
     margin: 50px auto;
     color: #f1f3f8;
     font-size: 36px;
+    @media only screen and (max-width: 600px) {
+        text-align: center;
+    }
 `;
 
 const Container = styled.div`

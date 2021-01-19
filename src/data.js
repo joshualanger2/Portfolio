@@ -22,7 +22,7 @@ export const projects = [
         id: "precordings",
         category: "React Web Development",
         title: "Precordings",
-        summary: "I built an internal tool for HubSpot Support to share and query pre-recorded product guides.",
+        summary: "I built an internal tool for HubSpot Support to share and query pre-recorded product tutorials.",
         backgroundColor: "#FF7A59",
         buttonLabel: "Read more",
         date: "Fall 2020 to present",
@@ -33,7 +33,7 @@ export const projects = [
         id: "justbreathe",
         category: "iOS Development",
         title: "Literally Just Breathe!",
-        summary: "An iOS app I am developing that provides users with a simple breathing guide in their pocket; a simple alternative to meditation with vast phsycial and psychological benefits.",
+        summary: "An iOS app I am developing that provides users with a simple breathing guide in their pocket; an alternative to meditation with phsycial and psychological benefits.",
         backgroundColor: "#5F2CDC",
         buttonLabel: "Read more",
         date: "Fall 2019 to present",
@@ -68,7 +68,7 @@ export const projects = [
         title: "2021 Project",
         summary: "Currently in progress...",
         backgroundColor: "#5D6DDC",
-        buttonLabel: "currently in progress",
+        buttonLabel: "In progress",
         date: "2021",
         size: "large"
     }

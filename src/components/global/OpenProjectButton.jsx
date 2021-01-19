@@ -21,6 +21,10 @@ const StyledButton = styled.button`
     &:focus {
     outline: none;
     }
+    @media only screen and (max-width: 600px) {
+        top: 2%;
+        right: 3%;
+    }
 `;
 function OpenProjectButton(props) {
     return(

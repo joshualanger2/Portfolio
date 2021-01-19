@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import styled from "styled-components";
 import {HorizontalSpacer} from "../global/styled-components"
 import HeaderNav from "./HeaderNav";
-import logo from "../../assets/logo.svg";
+import logo from "../../assets/logo.png";
 import {useSelector} from "react-redux"
 import useDocumentScrollThrottled from "../../utility/useDocumentScrollThrottled"
 

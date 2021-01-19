@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import  Header  from "./components/header/Header";
 import { List } from "./components/List";
-import Message from "./components/Message"
+import About from "./components/About"
 import Footer from "./components/footer/Footer";
 import { useSelector, useDispatch } from "react-redux";
 import {selectProject, initialLoad} from "./actions"
@@ -13,23 +13,7 @@ import {Portfolio} from './components/projects/Portfolio'
 import {AlaCarte} from './components/projects/AlaCarte'
 import {JustBreathe} from './components/projects/JustBreathe'
 import {Precordings} from './components/projects/Precordings'
-
-const viewportHeight = (id) => {
-    switch(id) {
-        case "fishing":
-            return "2000px";
-        case "alacarte":
-            return "2000px";
-        case "justbreathe":
-            return "2000px";
-        case "precordings":
-            return "2000px";
-        case "portfolio":
-            return "2000px";
-        default:
-            return "100%";
-    }
-}
+import {defaultHeight, defaultHeightTablet, defaultHeightMobile, standardProjectHeight, tabletProjectHeight, mobileProjectHeight} from './utility/viewPortHeightSwitch'
 
 // height: ${props => ((props.selectedTab === "about") || (props.selectedProject !== "")) ? "auto" : "2000px"};
 
@@ -40,9 +24,12 @@ const AppContainer = styled.div`
     flex-direction: row;
     overflow-y: hidden;
     overflow-x: hidden;
-    height: 7000px;
+    height: ${props => props.selectedProject === "" ? defaultHeight(props.selectedTab) : standardProjectHeight(props.selectedProject)};
+    @media only screen and (max-width: 1000px) {
+        height: ${props => props.selectedProject === "" ? defaultHeightTablet(props.selectedTab) : tabletProjectHeight(props.selectedProject)};
+    }
     @media only screen and (max-width: 600px) {
-        height: ${props => ((props.selectedTab === "about") || (props.selectedProject !== "")) ? "auto" : "3900px"};
+        height: ${props => props.selectedProject === "" ? defaultHeightMobile(props.selectedTab) : mobileProjectHeight(props.selectedProject)};
     }
 `;
 
@@ -141,7 +128,7 @@ export default function App() {
                 variants={variants}
                 transition={{duration: 0.2, ease: "easeOut", type: "tween" }}
             >
-                <Message />
+                <About />
                 <Footer />
             </motion.div>
             </AppContainer>

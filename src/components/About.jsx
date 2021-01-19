@@ -12,7 +12,7 @@ const aboutData = [
     "This past year I completed iOS and Web Development bootcamps so that I can build MVP's and early iterations in React or Swift. This is that work—"
 ];
 
-function Message() {
+function About() {
 
 	return (
 		<ParentDiv>
@@ -33,7 +33,7 @@ function Message() {
 	);
 }
 
-export default Message;
+export default About;
 
 // styled components
 const ParentDiv = styled(motion.div)`
@@ -66,6 +66,9 @@ const StyledHeader = styled(motion.h2)`
     font-weight: 800;
     margin: 5% 0;
     max-width: 65vw;
+    @media only screen and (max-width: 1000px) {
+        font-size: 40px;
+    }
 `;
 
 const StyledImg = styled(motion.img)`
